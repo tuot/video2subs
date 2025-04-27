@@ -47,8 +47,8 @@
 
 ## 使用方法
 
-在命令行中运行脚本 `generate_subtitles.py`，并提供视频文件路径作为参数。
+在命令行中运行脚本 `main.py`，并提供视频文件路径作为参数。
 
 ```bash
-python generate_subtitles.py your_video.mp4
+python main.py your_video.mp4
 ```
