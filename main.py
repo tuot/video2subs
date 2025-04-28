@@ -71,18 +71,6 @@ def generate_srt(segments, output_srt_path):
     print(f"SRT 字幕已生成: {output_srt_path}")
 
 
-def generate_vtt(segments, output_vtt_path):
-    """生成 VTT 字幕文件。"""
-    with open(output_vtt_path, "w", encoding="utf-8") as vtt_file:
-        vtt_file.write("WEBVTT\n\n")
-        for segment in segments:
-            start_time = format_timestamp(segment.start, "vtt")
-            end_time = format_timestamp(segment.end, "vtt")
-            vtt_file.write(f"{start_time} --> {end_time}\n")
-            vtt_file.write(f"{segment.text.strip()}\n\n")
-    print(f"VTT 字幕已生成: {output_vtt_path}")
-
-
 def create_subtitles(
     video_path, output_base, model_size, device, compute_type, language=None
 ):
@@ -98,9 +86,6 @@ def create_subtitles(
 
             srt_output_path = f"{output_base}.srt"
             generate_srt(segments, srt_output_path)
-
-            vtt_output_path = f"{output_base}.vtt"
-            generate_vtt(segments, vtt_output_path)
 
             print(
                 f"检测到的语言: {info.language} (置信度: {info.language_probability:.2f})"
